@@ -15,6 +15,10 @@ def main():
     for i in tqdm(range(1, 2)): ## change to while True and catch 404s and other errors
         page_url = URL + f'/catalogue/page-{i}.html'
         response = requests.get(page_url)
+
+        if response.status_code == 404:
+            break
+
         soup = BeautifulSoup(response.text, 'html.parser')
         books = soup.findAll('article', {'class': 'product_pod'})
 
