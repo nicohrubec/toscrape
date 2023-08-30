@@ -44,14 +44,11 @@ class BooksScraper:
             if row.find('th').text.strip() == 'UPC':
                 upc = row.find('td').text
 
-        description = soup.findAll('p')[-1].text
-
         return {
             'title': title,
             'price': price,
             'availability': availability,
-            'upc': upc,
-            'description': description
+            'upc': upc
         }
 
     def scrape(self):
